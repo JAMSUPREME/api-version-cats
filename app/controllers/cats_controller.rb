@@ -9,7 +9,11 @@ class CatsController < ApplicationController
   # GET /cats/1
   # Follows convention that content type will correspond with method names and views
   def show
-    @cat = CatService.new.send("get#{accepted_method}", params[:id])
+    begin
+      @cat = CatService.new.send("get#{accepted_method}", params[:id])
+    rescue NoMethodError
+      return render body: "Unsupported content type #{get_content_type}", status: :bad_request
+    end
 
     render "show#{accepted_view}"
   end

@@ -27,3 +27,7 @@ Here are the Accept header options:
 * application/vnd.myuscis.flat+json (flattened default)
 * application/vnd.myuscis.v2+json (v2)
 * application/vnd.myuscis.v2.flat+json (flattened v2)
+
+## Unsupported media types return a 400
+
+Attempting to retrieve with an Accept header of `application/vnd.myuscis.v3.flat+json` would result in a 400 Bad Request
