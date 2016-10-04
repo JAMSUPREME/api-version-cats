@@ -1,24 +1,29 @@
-# README
+# How to use
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Create an owner
 
-Things you may want to cover:
+```
+POST localhost:3005/owners
 
-* Ruby version
+Body:
+{ "name":"Tophat" }
+```
 
-* System dependencies
+## Create a cat
 
-* Configuration
+```
+POST localhost:3005/cats
 
-* Database creation
+Body:
+{ "name":"Whiskers", "age": 9, "owner_id": 1 }
+```
 
-* Database initialization
+## Retrieve cats in several ways via Accept
 
-* How to run the test suite
+Retrieve a cat via `GET localhost:3005/cats/1`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Here are the Accept header options:
+* application/json (default)
+* application/vnd.myuscis.flat+json (flattened default)
+* application/vnd.myuscis.v2+json (v2)
+* application/vnd.myuscis.v2.flat+json (flattened v2)
